@@ -40,7 +40,6 @@
             
         </div>
 
-        <!-- Professional Information Section -->
         <div class="form-section">
             <h3>Professional Information</h3>
             <label for="experience">Years of Experience:</label>
