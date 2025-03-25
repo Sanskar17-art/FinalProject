@@ -1,0 +1,81 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Profile container */
+.profile-container {
+    max-width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+}
+
+/* Profile title */
+.profile-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Profile card */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Profile photo */
+.profile-photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #3498db;
+    margin-bottom: 15px;
+}
+
+/* Profile details */
+.profile-details {
+    text-align: left;
+    width: 100%;
+    padding: 10px;
+}
+
+.profile-details p {
+    font-size: 16px;
+    color: #555;
+    margin: 5px 0;
+    padding: 8px;
+    background: #f9f9f9;
+    border-radius: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .profile-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .profile-photo img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-details p {
+        font-size: 14px;
+    }
+}

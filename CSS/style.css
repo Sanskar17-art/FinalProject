@@ -1,0 +1,74 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+ 
+body {
+    background-image: url('https://wallpaperaccess.com/full/334517.jpg');  
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+ 
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+ 
+.animated-text {
+    font-size: 100px; 
+    font-weight: 900;  
+    text-shadow: 4px 4px 10px rgba(12, 11, 11, 0.7);  
+    animation: slideDown 1.5s ease-out both, glow 1.5s ease-in-out infinite alternate;
+}
+ 
+@keyframes slideDown {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+ 
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #0c0c0c, 0 0 30px #090909, 0 0 40px #060606; 
+    }
+    to {
+        text-shadow: 0 0 20px #0c0c0c, 0 0 30px #0b0b0b, 0 0 40px #0f0f0f, 0 0 50px #131313;
+    }
+}
+ 
+.button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.start-button {
+    margin: 0 20px; 
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid white;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.start-button:hover {
+    background-color: white;
+    color: #0b040b;
+} 

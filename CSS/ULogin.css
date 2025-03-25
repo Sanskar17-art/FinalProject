@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://www.wallpapertip.com/wmimgs/135-1350574_network-blue-wallpapper-4k.jpg');  
+    background-size: cover;
+    background-position: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.85); /* Darker background for better contrast */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Deeper shadow for a 3D effect */
+    width: 100%;
+    max-width: 400px; /* Responsive width */
+}
+
+h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-transform: uppercase; /* Adds a bold title effect */
+    letter-spacing: 2px;
+}
+
+label {
+    color: #d3d3d3; /* Softer text color */
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+    color: #333;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #4caf50; /* Adds a focused green border */
+    background-color: #ffffff;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 25px; /* More rounded button for modern design */
+    background: linear-gradient(to right, #090992, #0e0c83); /* Gradient effect */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(to right, #0e0c83, #090992); /* Reverse gradient */
+    transform: scale(1.05); /* Slight enlarge on hover */
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.social-login button {
+    width: 48%; /* Adjusted width for two buttons side-by-side */
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background-color: #ffffff;
+    color: black;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.social-login button:hover {
+    background-color: #ddd; /* Lighter shade on hover */
+}
+
+p.error-message {
+    color: red;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 10px;
+}

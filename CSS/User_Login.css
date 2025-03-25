@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://www.wallpapertip.com/wmimgs/135-1350574_network-blue-wallpapper-4k.jpg');  
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;  
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 500px;  
+    height: 400px;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+}
+
+label {
+    color: white;
+    margin-top: 200px;  
+}
+
+input {
+    width: 90%;
+    padding: 20px;  
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 20px;  
+    margin-top: 20px;  
+    border: none;
+    border-radius: 5px;
+    background-color: #090992; 
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0e0c83;  
+}
+
+.social-login {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;  
+}
+
+.social-login button {
+    background-color: #f1f1f1; 
+    color: black;
+}
+
+ 

@@ -1,0 +1,26 @@
+/* Apply Flexbox to the body and html */
+html, body {
+  height: 100%;
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer Styling */
+.footer {
+  text-align: center;
+  padding: 25px;
+  background: #2c3e50;
+  color: #fff;
+  margin-top: auto; 
+}
+
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+.footer a:hover {
+  color: #ffcc00;
+}

@@ -1,0 +1,100 @@
+/* Table Container */
+.table-container {
+    width: calc(100% - 270px); /* Adjust width dynamically based on sidebar */
+    margin-left: 270px; /* Moves table away from sidebar */
+    padding: 20px;
+    overflow-x: auto; /* Prevents horizontal scroll issues */
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* Allow auto resizing */
+}
+
+thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    word-wrap: break-word;
+}
+
+/* Adjust Column Widths */
+th:nth-child(1), td:nth-child(1) { width: 5%; min-width: 60px; }  /* ID */
+th:nth-child(2), td:nth-child(2) { width: 15%; min-width: 120px; } /* Name */
+th:nth-child(3), td:nth-child(3) { width: 25%; min-width: 180px; } /* Email */
+th:nth-child(4), td:nth-child(4) { width: 15%; min-width: 140px; } /* Phone */
+th:nth-child(5), td:nth-child(5) { width: 20%; min-width: 160px; } /* Address */
+th:nth-child(6), td:nth-child(6) { width: 20%; min-width: 160px; } /* Actions */
+
+/* Button Styles */
+.btn-edit, .btn-delete {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-edit {
+    background-color: #28a745;
+}
+
+.btn-edit:hover {
+    background-color: #218838;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .table-container {
+        margin-left: 0; /* Remove margin when sidebar collapses */
+        width: 100%;
+        padding: 10px;
+    }
+
+    th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+    
+    .btn-edit, .btn-delete {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .btn-edit, .btn-delete {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+}

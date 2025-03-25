@@ -1,0 +1,209 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #e0f7fa; /* Light blue background */
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Main container */
+.view-user-details-container {
+    max-width: 1000px;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-user-details-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+.profile-heading {
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    color: #2d2d2d;
+    font-weight: 600;
+}
+
+/* Card Styling */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Profile Photo */
+.profile-photo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo {
+    border-radius: 50%;
+    border: 5px solid #4CAF50;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile-photo-container:hover .profile-photo {
+    transform: scale(1.1);
+}
+
+/* File Input Styling */
+.file-input-container{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.file-input {
+    margin-top: 10px;
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #fafafa;
+    color: #333;
+    cursor: pointer;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.file-input:hover {
+    border-color: #4CAF50;
+    background-color: #f1f1f1;
+}
+
+/* Form Styling */
+.profile-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #4CAF50;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+    outline: none;
+}
+
+.form-group input[type="file"] {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.form-group input[type="file"]:focus {
+    border-color: #4CAF50;
+}
+
+/* Button Styling */
+.card-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Link Styling */
+#worker-certificate a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#worker-certificate a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .view-user-details-container {
+        padding: 20px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-heading {
+        font-size: 2.3rem;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .view-user-details-container {
+        padding: 15px;
+    }
+
+    .form-group input {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+    }
+}

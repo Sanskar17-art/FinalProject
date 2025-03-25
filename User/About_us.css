@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Default Navbar */
+/* .navbar {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: all 0.4s ease-in-out; /* Smooth transition */
+/* } */ 
+
+/* Enlarged Navbar on Click
+.navbar.active {
+    padding: 40px 50px; /* Increase height */
+/* } */
+
+/* Title */
+/* .title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+} */
+
+/* Navigation Links */
+/* .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+} */
+
+/* .navbar ul li {
+    display: inline;
+} */
+
+/* .navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 22px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+} */
+
+/* Hover Effect */
+/* .navbar ul li a:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.15);
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.7);
+} */
+
+/* Profile Icon (Hidden by Default) */
+/* .profile-container {
+    position: relative;
+} */
+
+/* .profile-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: none; /* Hidden initially */
+    /* transition: 0.3s;
+}  */
+
+/* Show profile icon on hover */
+/* .navbar:hover .profile-icon {
+    display: block;
+} */
+
+/* Responsive Design */
+/* @media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 15px;
+        padding-top: 15px;
+    }
+
+    .navbar ul li a {
+        display: block;
+        padding: 15px;
+    }
+
+    .profile-icon {
+        width: 50px;
+        height: 50px;
+    }
+} */

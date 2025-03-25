@@ -1,0 +1,128 @@
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 20px;
+    transition: width 0.3s;
+}
+
+/* Sidebar Title */
+.sidebar h2 {
+    text-align: center;
+    color: white;
+    font-size: 26px; /* Increased font size */
+    margin-bottom: 25px;
+}
+
+/* Sidebar Links */
+.sidebar a {
+    display: block;
+    color: white;
+    padding: 18px 20px; /* Increased padding */
+    text-decoration: none;
+    font-size: 20px; /* Increased font size */
+    border-left: 4px solid transparent;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    background: #1abc9c;
+    border-left: 4px solid white;
+    padding-left: 28px;
+}
+
+/* Logout Button */
+.sidebar .logout {
+    background: red;
+    padding: 18px;
+    text-align: center;
+    font-size: 20px; /* Increased font size */
+    width: calc(100% - 40px);
+    margin: 20px auto;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.sidebar .logout:hover {
+    background: darkred;
+}
+
+/* Content Section */
+.content {
+    margin-left: 250px;
+    padding: 25px;
+    transition: margin-left 0.3s;
+}
+
+.content h2 {
+    color: #2c3e50;
+    font-size: 28px; /* Increased font size */
+    margin-bottom: 15px;
+}
+
+.content p {
+    font-size: 20px; /* Increased font size */
+    color: #333;
+}
+
+/* Responsive Sidebar */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar a {
+        font-size: 18px;
+    }
+
+    .content {
+        margin-left: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .sidebar {
+        width: 60px;
+        align-items: center;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar a {
+        text-align: center;
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .sidebar a:hover {
+        padding-left: 12px;
+    }
+
+    .content {
+        margin-left: 60px;
+    }
+
+    /* Adjust Logout Button */
+    .sidebar .logout {
+        width: 80%;
+        margin: auto;
+        font-size: 18px;
+    }
+}
