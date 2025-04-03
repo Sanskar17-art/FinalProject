@@ -291,6 +291,61 @@ body {
 }
 
 /* Responsive Design */
+/* Hire Button States */
+.hire-btn.pending {
+    background-color: #f39c12;
+    cursor: not-allowed;
+}
+
+.hire-btn.accepted {
+    background-color: #27ae60;
+    cursor: not-allowed;
+}
+
+.hire-btn.rejected {
+    background-color: #e74c3c;
+}
+
+/* Alert Messages */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+    z-index: 1000;
+    animation: slideIn 0.3s ease-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #27ae60;
+}
+
+.alert-error {
+    background-color: #e74c3c;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Action Forms */
+.action-form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .profile-header {
         flex-direction: column;
@@ -312,6 +367,15 @@ body {
 
     .profile-actions {
         flex-direction: column;
+        gap: 10px;
+    }
+    
+    .action-form {
+        width: 100%;
+    }
+    
+    .hire-btn, .report-btn {
+        width: 100%;
     }
 }
 

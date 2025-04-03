@@ -31,8 +31,8 @@ if (isset($_POST['worker_id'])) {
     exit();
 }
 
-// Check if worker exists
-$query = $conn->prepare("SELECT * FROM workers WHERE id = ?");
+// Check if worker exists and is available
+$query = $conn->prepare("SELECT * FROM workers WHERE id = ? AND is_available = 1");
 if (!$query) {
     die("Error preparing query: " . $conn->error);
 }
@@ -44,7 +44,11 @@ $result = $query->get_result();
 if($result->num_rows === 0) {
     // Clear invalid worker_id from session
     unset($_SESSION['worker_id']);
-    header("Location: Workers.php");
+    // Show error message and redirect
+    echo "<script>
+        alert('This worker is currently unavailable.');
+        window.location.href = 'Workers.php';
+    </script>";
     exit();
 }
 
@@ -75,10 +79,13 @@ $profile_image = !empty($worker['profile_photo']) && file_exists($upload_path . 
         <div class="profile-card">
             <div class="profile-header">
                 <div class="profile-image-container">
-                    <img src="<?php echo htmlspecialchars($upload_path . $profile_image); ?>" alt="Profile Photo" class="profile-image">
+                    <img src="<?php echo htmlspecialchars($profile_image_path); ?>" 
+                         alt="<?php echo htmlspecialchars($worker['name']); ?>'s Profile Photo" 
+                         class="profile-image"
+                         onerror="this.src='<?php echo htmlspecialchars($upload_path . $default_image); ?>'">
                     <div class="profile-status">
                         <i class="fas fa-circle"></i>
-                        <span>Available</span>
+                        <span>Available for Work</span>
                     </div>
                 </div>
                 <div class="profile-title">
@@ -140,7 +147,7 @@ $profile_image = !empty($worker['profile_photo']) && file_exists($upload_path . 
             </div>
 
             <div class="profile-actions">
-                <form action="hire_worker.php" method="POST" class="action-form">
+                <form action="Hire_Worker.php" method="POST" class="action-form">
                     <input type="hidden" name="worker_id" value="<?php echo htmlspecialchars($worker['id']); ?>">
                     <button type="submit" class="hire-btn">
                         <i class="fas fa-handshake"></i>

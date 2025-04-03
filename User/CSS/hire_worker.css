@@ -1,0 +1,271 @@
+.hiring-form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+    animation: slideDown 0.5s ease-in-out;
+}
+
+.form-header h2 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 28px;
+    position: relative;
+    display: inline-block;
+}
+
+.form-header h2:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: #3498db;
+    bottom: -8px;
+    left: 25%;
+    border-radius: 3px;
+    animation: expandWidth 0.8s ease-in-out;
+}
+
+.form-header p {
+    color: #7f8c8d;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+    animation-fill-mode: both;
+}
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
+.form-group:nth-child(5) { animation-delay: 0.5s; }
+.form-group:nth-child(6) { animation-delay: 0.6s; }
+.form-group:nth-child(7) { animation-delay: 0.7s; }
+.form-group:nth-child(8) { animation-delay: 0.8s; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+    transform: translateY(-2px);
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+}
+
+.form-group input[type="tel"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+}
+
+.form-group input[type="tel"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    background-color: #fff;
+    transform: translateY(-2px);
+}
+
+.job-type-group {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.job-type-option {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background-color: #f9f9f9;
+}
+
+.job-type-option:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job-type-option.selected {
+    border-color: #3498db;
+    background: #f7f9fc;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+}
+
+.job-type-option input[type="radio"] {
+    display: none;
+}
+
+.job-type-option i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    display: block;
+    color: #3498db;
+    transition: transform 0.3s ease;
+}
+
+.job-type-option:hover i {
+    transform: scale(1.2);
+}
+
+.submit-btn {
+    background: #3498db;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.5s ease-in-out 1s both;
+}
+
+.submit-btn:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn i {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+    transform: translateX(5px);
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fde8e8;
+    border-radius: 8px;
+    border-left: 4px solid #e74c3c;
+    animation: shake 0.5s ease-in-out;
+}
+
+.success-message {
+    color: #27ae60;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #e8f8f0;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+    animation: slideIn 0.5s ease-in-out;
+}
+
+.required-field::after {
+    content: "*";
+    color: #e74c3c;
+    margin-left: 4px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes expandWidth {
+    from { width: 0; }
+    to { width: 50%; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+@media (max-width: 768px) {
+    .hiring-form-container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    .job-type-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .form-header h2 {
+        font-size: 24px;
+    }
+} 
