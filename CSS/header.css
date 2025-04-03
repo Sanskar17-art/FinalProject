@@ -1,48 +1,154 @@
-/* Header Styling */
+/* Header Styles */
+:root {
+    --header-bg: linear-gradient(45deg, #00bcd4, #3f51b5);
+    --header-text: #ffffff;
+    --header-hover: #ffcc00;
+    --header-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
-    height: 60px;
-    background: linear-gradient(45deg, #00bcd4, #3f51b5);
-    color: #fff;
+    padding: 1rem 2.5rem;
+    background: var(--header-bg);
+    color: var(--header-text);
     border-radius: 0 0 15px 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
-    font-size: 26px;
-    font-weight: 500;
+    box-shadow: var(--header-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: var(--transition);
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 1.6rem;
+    font-weight: 600;
     letter-spacing: 1px;
-  }
-  
-  .nav a {
-    margin-left: 25px;
-    color: #fff;
+    position: relative;
+    transition: var(--transition);
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--header-hover);
+    transition: var(--transition);
+}
+
+.logo:hover::after {
+    width: 100%;
+}
+
+/* Navigation Styling */
+.nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav a {
+    color: var(--header-text);
     text-decoration: none;
     font-weight: 500;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .nav a:hover {
-    color: #ffcc00;
-  }
-  
-  .profile {
-    display: flex;
-    align-items: center;
-  }
-  
-  .profile img {
-    border-radius: 50%;
-    margin-right: 10px;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav a:hover {
+    color: var(--header-hover);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--header-hover);
+    transition: var(--transition);
+    transform: translateX(-50%);
+}
+
+.nav a:hover::after {
+    width: 80%;
+}
+
+/* Profile Section */
+.profile {
+    position: relative;
+}
+
+.profile img {
     width: 40px;
     height: 40px;
-  }
-  
-  .profile span {
-    font-weight: 500;
-    font-size: 18px;
-  }
+    border-radius: 50%;
+    border: 2px solid var(--header-text);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.profile img:hover {
+    transform: scale(1.1);
+    border-color: var(--header-hover);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--header-bg);
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 0 0 15px 15px;
+        box-shadow: var(--header-shadow);
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .nav a {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+    }
+}
+
+/* Animation Classes */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Header Scroll Effect */
+.header.scrolled {
+    padding: 0.8rem 2.5rem;
+    background: rgba(0, 188, 212, 0.95);
+    backdrop-filter: blur(10px);
+}

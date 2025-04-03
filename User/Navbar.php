@@ -1,3 +1,4 @@
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,53 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Navigation Bar</title>
     <link rel="stylesheet" href="Navbar.css">
-    <script>
-                document.addEventListener("DOMContentLoaded", function () {
-            const menuToggle = document.getElementById("menu-toggle");
-            const menu = document.getElementById("menu");
-            const overlay = document.getElementById("overlay");
-
-            // Function to toggle menu
-            function toggleMenu() {
-                menu.classList.toggle("active");
-                overlay.classList.toggle("active");
-            }
-
-            // Click event to open/close menu
-            menuToggle.addEventListener("click", toggleMenu);
-            overlay.addEventListener("click", toggleMenu);
-        });
-
-    </script> <!-- JavaScript for toggle menu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
-    <!-- Overlay when mobile menu is active -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- Navbar -->
     <div class="navbar">
-        <!-- Toggle Button for Mobile -->
-        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
-
-        <!-- Website Title -->
-        <h1 class="title">WHAT YOU WANT</h1>
-
-        <!-- Navigation Links -->
-        <ul id="menu">
-            <li><a href="User_Home.php">Home</a></li>
-            <li><a href="Profile.php">Profile</a></li>
-            <li><a href="Workers.php">Find a Worker</a></li>
-            <li><a href="Contact.php">Contact</a></li>
-            <li><a href="Report.php">Report</a></li>
-            <li><a href="About_us.php">About</a></li>
+        <div class="logo-section">
+            <i class="fas fa-shopping-bag"></i>
+            <h1 class="title">WHAT YOU WANT</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="User_Home.php"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="Profile.php"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="Contact.php"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="About_us.php"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="logout.php" class="logout-btn" onclick="event.preventDefault(); window.location.href='../User/Logout.php';"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
         </ul>
-
-        <!-- Profile Icon -->
-        <div class="profile-container">
-            <img src="profile-icon.png" alt="Profile" class="profile-icon">
+        <div class="menu-toggle">
+            <i class="fas fa-bars"></i>
         </div>
     </div>
 
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>

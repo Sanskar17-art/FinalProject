@@ -1,69 +1,315 @@
- 
-body {
+/* Reset and Base Styles */
+* {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: url('https://wallpapercave.com/wp/wp9110105.jpg') no-repeat center center fixed;
-    background-size: cover;
+    box-sizing: border-box;
 }
 
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animated Background */
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle, .square, .triangle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    data-speed: 0.5;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    data-speed: 0.8;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 30%;
+    data-speed: 0.3;
+    animation-delay: 4s;
+}
+
+.square {
+    border-radius: 0;
+    animation: rotate 8s linear infinite;
+}
+
+.square-1 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 25%;
+    data-speed: 0.6;
+    animation-delay: 1s;
+}
+
+.square-2 {
+    width: 90px;
+    height: 90px;
+    bottom: 30%;
+    right: 35%;
+    data-speed: 0.4;
+    animation-delay: 3s;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86px solid rgba(255, 255, 255, 0.1);
+    animation: spin 10s linear infinite;
+}
+
+.triangle-1 {
+    top: 40%;
+    left: 20%;
+    data-speed: 0.7;
+    animation-delay: 2.5s;
+}
+
+/* Container Styles */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     gap: 50px;
+    padding: 20px;
+    animation: containerAppear 1s ease-out;
 }
 
+/* Card Styles */
 .card {
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
     text-align: center;
-    width: 300px;
+    width: 350px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: cardFloat 3s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.5s;
+}
+
+.card:hover::before {
+    transform: translateX(100%);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .card img {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    animation: imagePulse 2s ease-in-out infinite;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 h2 {
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: #4fc3f7;
+    border-radius: 2px;
+}
+
+/* Button Styles */
 .start-button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: white;
-    background-color: #5771da;
+    padding: 15px 40px;
+    font-size: 1.2em;
+    color: #ffffff;
+    background: rgba(79, 195, 247, 0.2);
     text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 50px;
+    border: 2px solid rgba(79, 195, 247, 0.4);
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
 }
 
 .start-button:hover {
-    background-color: #05055c;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background: rgba(79, 195, 247, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(79, 195, 247, 0.6);
 }
 
-form {
-    margin-top: 20px;
+.start-button:hover::before {
+    left: 100%;
 }
 
+.start-button:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes containerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes imagePulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
-        gap: 20px;
+        gap: 30px;
+        padding: 20px;
     }
 
     .card {
         width: 90%;
+        max-width: 350px;
+        padding: 30px 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .start-button {
+        padding: 12px 30px;
+        font-size: 1.1em;
     }
 }
 

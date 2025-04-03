@@ -28,25 +28,18 @@ $profileImage = !empty($worker['profile_photo']) ? $worker['profile_photo'] : 'u
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Worker Dashboard</title>
-  <link rel="stylesheet" href="CSS/home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Worker Dashboard</title>
+    <link rel="stylesheet" href="CSS/Worker_Home.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <?php include 'header.php' ?>
-
-  <div class="dashboard">
-    <div class="welcome">
-      <h2>Welcome, <?php echo $worker['name']; ?>!</h2>
-      <p>Here's your daily overview of tasks and notifications.</p>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loader"></div>
     </div>
-    <div class="profile-card">
-      <img src="<?php echo $profileImage; ?>" alt="Profile Picture" width="100">
-      <h3><?php echo $worker['name']; ?></h3>
-      <p>Email: <?php echo $worker['email']; ?></p>
-      <p>Profession: <?php echo $worker['profession']; ?></p>
-      <button class="btn-edit-profile" onclick="window.location.href='Worker_ProfileUp.php'">Edit Profile</button>
 
     <?php include 'header.php' ?>
 
@@ -64,13 +57,6 @@ $profileImage = !empty($worker['profile_photo']) ? $worker['profile_photo'] : 'u
                     <h3><?php echo $worker['name']; ?></h3>
                     <p><i class="fas fa-envelope"></i> <?php echo $worker['email']; ?></p>
                     <p><i class="fas fa-briefcase"></i> <?php echo $worker['profession']; ?></p>
-                    <div class="availability-toggle">
-                        <label class="switch">
-                            <input type="checkbox" id="availabilityToggle" <?php echo isset($worker['is_available']) && $worker['is_available'] ? 'checked' : ''; ?>>
-                            <span class="slider"></span>
-                        </label>
-                        <span class="availability-text"><?php echo isset($worker['is_available']) && $worker['is_available'] ? 'Available for Work' : 'Currently Unavailable'; ?></span>
-                    </div>
                     <button class="btn-edit-profile" onclick="window.location.href='Worker_ProfileUp.php'">
                         <i class="fas fa-edit"></i> Edit Profile
                     </button>
@@ -78,9 +64,30 @@ $profileImage = !empty($worker['profile_photo']) ? $worker['profile_photo'] : 'u
             </div>
         </div>
     </div>
-  </div>
 
-  <?php include 'footer.php' ?>
+    <div class="container">
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <i class="fas fa-tasks"></i>
+                <h3>Active Jobs</h3>
+                <p>5</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-star"></i>
+                <h3>Rating</h3>
+                <p>4.8/5</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Completed Jobs</h3>
+                <p>12</p>
+            </div>
+            <div class="stat-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Earnings</h3>
+                <p>$2,500</p>
+            </div>
+        </div>
 
         <div class="recent-activity">
             <h2>Recent Activity</h2>
@@ -124,60 +131,6 @@ $profileImage = !empty($worker['profile_photo']) ? $worker['profile_photo'] : 'u
                 loader.style.display = 'none';
             }, 500);
         });
-
-        // Handle availability toggle
-        document.getElementById('availabilityToggle').addEventListener('change', function() {
-            const isAvailable = this.checked;
-            const toggle = this;
-            const statusText = document.querySelector('.availability-text');
-            
-            // Show loading state
-            toggle.disabled = true;
-            
-            fetch('Backend/update_availability.php', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: `is_available=${isAvailable ? 1 : 0}`
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Update status text
-                    statusText.textContent = isAvailable ? 'Available for Work' : 'Currently Unavailable';
-                    // Show success message
-                    showNotification(isAvailable ? 'You are now available for work' : 'You are now unavailable for work', 'success');
-                } else {
-                    // Revert toggle if update failed
-                    toggle.checked = !isAvailable;
-                    showNotification(data.message || 'Failed to update availability status', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                toggle.checked = !isAvailable;
-                showNotification('An error occurred while updating availability status', 'error');
-            })
-            .finally(() => {
-                // Re-enable toggle
-                toggle.disabled = false;
-            });
-        });
-
-        // Notification function
-        function showNotification(message, type) {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            // Remove notification after 3 seconds
-            setTimeout(() => {
-                notification.remove();
-            }, 3000);
-        }
 
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {

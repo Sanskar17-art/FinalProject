@@ -2,13 +2,12 @@
 session_start();
 header('Content-Type: application/json');
 
-include 'connection.php';
-$username = "root";
+include 'connection.php';$username = "root";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['worker_id'])) {
     $worker_id = $_POST['worker_id'];
 
-    $sql = "SELECT name, email, profession, profile_photo, is_available FROM workers WHERE id = ?";
+    $sql = "SELECT name, email, profession, profile_photo FROM workers WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $worker_id);
     $stmt->execute();
@@ -22,8 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['worker_id'])) {
             "name" => $row['name'],
             "email" => $row['email'],
             "profession" => $row['profession'],
-            "profile_photo" => $profileImage,
-            "is_available" => (bool)$row['is_available']
+            "profile_photo" => $profileImage
         ]);
     } else {
         echo json_encode(["success" => false, "message" => "Worker not found."]);

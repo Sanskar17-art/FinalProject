@@ -31,8 +31,8 @@ if (isset($_POST['worker_id'])) {
     exit();
 }
 
-// Check if worker exists and is available
-$query = $conn->prepare("SELECT * FROM workers WHERE id = ? AND is_available = 1");
+// Check if worker exists
+$query = $conn->prepare("SELECT * FROM workers WHERE id = ?");
 if (!$query) {
     die("Error preparing query: " . $conn->error);
 }
@@ -44,22 +44,25 @@ $result = $query->get_result();
 if($result->num_rows === 0) {
     // Clear invalid worker_id from session
     unset($_SESSION['worker_id']);
-    // Show error message and redirect
-    echo "<script>
-        alert('This worker is currently unavailable.');
-        window.location.href = 'Workers.php';
-    </script>";
+    header("Location: Workers.php");
     exit();
 }
 
 $worker = $result->fetch_assoc();
 
 // Define upload path
-$upload_path = dirname(__DIR__) . '/Backend/uploads/';
+$upload_path = '../Backend/uploads/';
 $default_image = 'default-profile.jpg';
-$profile_image = !empty($worker['profile_photo']) && file_exists($upload_path . $worker['profile_photo']) 
-    ? $worker['profile_photo'] 
-    : $default_image;
+
+// Check if profile photo exists and is valid
+$profile_image = !empty($worker['profile_photo']) ? $worker['profile_photo'] : $default_image;
+$profile_image_path = $upload_path . $profile_image;
+
+// Verify if the image file exists
+if (!file_exists($profile_image_path)) {
+    $profile_image = $default_image;
+    $profile_image_path = $upload_path . $default_image;
+}
 ?>
 
 <!DOCTYPE html>
@@ -85,7 +88,7 @@ $profile_image = !empty($worker['profile_photo']) && file_exists($upload_path . 
                          onerror="this.src='<?php echo htmlspecialchars($upload_path . $default_image); ?>'">
                     <div class="profile-status">
                         <i class="fas fa-circle"></i>
-                        <span>Available for Work</span>
+                        <span>Available</span>
                     </div>
                 </div>
                 <div class="profile-title">
@@ -115,6 +118,20 @@ $profile_image = !empty($worker['profile_photo']) && file_exists($upload_path . 
                         <div class="info-details">
                             <h3>Gender</h3>
                             <p><?php echo ucfirst(htmlspecialchars($worker['gender'])); ?></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-star"></i>
+                        <div class="info-details">
+                            <h3>Experience Level</h3>
+                            <p><?php echo htmlspecialchars($worker['experience_level']); ?></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-language"></i>
+                        <div class="info-details">
+                            <h3>Languages</h3>
+                            <p><?php echo htmlspecialchars($worker['languages']); ?></p>
                         </div>
                     </div>
                 </div>

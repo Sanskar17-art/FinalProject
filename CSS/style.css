@@ -1,74 +1,395 @@
-body, html {
-    height: 100%;
+/* Reset and Base Styles */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-}
- 
-body {
-    background-image: url('https://wallpaperaccess.com/full/334517.jpg');  
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    padding: 0;
+    box-sizing: border-box;
 }
 
- 
-.container {
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+    min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    text-align: center;
-}
- 
-.animated-text {
-    font-size: 100px; 
-    font-weight: 900;  
-    text-shadow: 4px 4px 10px rgba(12, 11, 11, 0.7);  
-    animation: slideDown 1.5s ease-out both, glow 1.5s ease-in-out infinite alternate;
-}
- 
-@keyframes slideDown {
-    from {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
- 
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #0c0c0c, 0 0 30px #090909, 0 0 40px #060606; 
-    }
-    to {
-        text-shadow: 0 0 20px #0c0c0c, 0 0 30px #0b0b0b, 0 0 40px #0f0f0f, 0 0 50px #131313;
-    }
-}
- 
-.button-group {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    color: #ffffff;
+    overflow: hidden;
+    position: relative;
 }
 
+/* Background Elements */
+.background-elements {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle, .square, .triangle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.circle-1 {
+    width: 100px;
+    height: 100px;
+    top: 20%;
+    left: 10%;
+    data-speed: 0.5;
+    animation-delay: 0s;
+}
+
+.circle-2 {
+    width: 150px;
+    height: 150px;
+    top: 60%;
+    right: 15%;
+    data-speed: 0.8;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 80px;
+    height: 80px;
+    bottom: 20%;
+    left: 30%;
+    data-speed: 0.3;
+    animation-delay: 4s;
+}
+
+.square {
+    border-radius: 0;
+    animation: rotate 8s linear infinite;
+}
+
+.square-1 {
+    width: 120px;
+    height: 120px;
+    top: 30%;
+    right: 25%;
+    data-speed: 0.6;
+    animation-delay: 1s;
+}
+
+.square-2 {
+    width: 90px;
+    height: 90px;
+    bottom: 30%;
+    right: 35%;
+    data-speed: 0.4;
+    animation-delay: 3s;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 86px solid rgba(255, 255, 255, 0.1);
+    animation: spin 10s linear infinite;
+}
+
+.triangle-1 {
+    top: 40%;
+    left: 20%;
+    data-speed: 0.7;
+    animation-delay: 2.5s;
+}
+
+/* Container Styles */
+.container {
+    text-align: center;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: containerAppear 1.5s ease-out;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Logo Container */
+.logo-container {
+    margin-bottom: 30px;
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.logo-icon {
+    font-size: 4em;
+    color: #4fc3f7;
+    text-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+    animation: logoPulse 2s ease-in-out infinite;
+}
+
+/* Animated Text */
+.animated-text {
+    font-size: 4.5em;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: textFloat 3s ease-in-out infinite;
+    opacity: 0;
+    animation: textReveal 1s ease-out forwards, textFloat 3s ease-in-out infinite 1s;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 1.2s forwards;
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin-top: 50px;
+    opacity: 0;
+    animation: buttonReveal 0.8s ease-out 1.5s forwards;
+}
+
+/* Button Styles */
 .start-button {
-    margin: 0 20px; 
-    padding: 15px 30px;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: white;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 18px;
+    padding: 18px 45px;
+    font-size: 1.3em;
+    font-weight: 600;
     text-decoration: none;
-    border: 2px solid white;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    color: #ffffff;
+    background: rgba(79, 195, 247, 0.2);
+    border: 2px solid rgba(79, 195, 247, 0.4);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(20px);
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.start-button i {
+    font-size: 1.2em;
+    transition: transform 0.3s ease;
+}
+
+.start-button:hover i {
+    transform: translateX(5px);
+}
+
+.start-button:nth-child(1) { animation: buttonSlide 0.8s ease-out 1.5s forwards; }
+.start-button:nth-child(2) { animation: buttonSlide 0.8s ease-out 1.7s forwards; }
+
+.start-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: 0.6s;
 }
 
 .start-button:hover {
-    background-color: white;
-    color: #0b040b;
+    transform: translateY(-5px) scale(1.05);
+    background: rgba(79, 195, 247, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    border-color: rgba(79, 195, 247, 0.6);
+}
+
+.start-button:hover::before {
+    left: 100%;
+}
+
+.start-button:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* Animations */
+@keyframes containerAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes textFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes buttonReveal {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes buttonSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logoFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+        width: 95%;
+    }
+
+    .animated-text {
+        font-size: 2.8em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .start-button {
+        width: 100%;
+        text-align: center;
+        padding: 15px 30px;
+        justify-content: center;
+    }
+}
+
+/* Loading Animation */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #1a237e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 0.5s ease-out forwards;
+}
+
+.loading::after {
+    content: '';
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top: 4px solid #4fc3f7;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
 } 

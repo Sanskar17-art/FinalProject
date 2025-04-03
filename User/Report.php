@@ -15,14 +15,15 @@ if (!$conn) {
 $message = ""; // To store success or error message
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST['username']);
     $worker_name = trim($_POST['worker_name']);
     $email = trim($_POST['email']);
     $evidence_text = trim($_POST['evidence']);
 
     // Insert data into the database
-    $sql = "INSERT INTO reports (worker_name, email, evidence) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO reports (username, worker_name, email, evidence) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $worker_name, $email, $evidence_text);
+    $stmt->bind_param("ssss", $username, $worker_name, $email, $evidence_text);
 
     if ($stmt->execute()) {
         $message = "success"; // Report submitted successfully
@@ -37,20 +38,21 @@ include('Navbar.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Form</title>
     <link rel="stylesheet" href="../CSS/Report.css">
-
+    
     <!-- Include SweetAlert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-
     <h2>Report Form</h2>
     <center>
     <form method="POST" action="report.php">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br>
+
         <label for="worker_name">Worker Name:</label>
         <input type="text" id="worker_name" name="worker_name" required><br>
  
@@ -84,6 +86,5 @@ include('Navbar.php');
             <?php } ?>
         });
     </script>
-
 </body>
 </html>

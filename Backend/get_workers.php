@@ -1,43 +1,32 @@
 <?php
-header('Content-Type: application/json');
+require_once "connection.php"; // Include database connection
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "project";
+$profession = isset($_GET['profession']) ? $_GET['profession'] : '';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die(json_encode(['error' => 'Connection failed: ' . $conn->connect_error]));
-}
-
-// Get profession from query string
-$profession = isset($_GET['profession']) ? $conn->real_escape_string($_GET['profession']) : '';
-
-// Prepare the query to fetch only available workers
-$sql = "SELECT * FROM workers WHERE is_available = 1";
+// Prepare SQL query
+$query = "SELECT id, name, email, mobile, profession, experience, qualification, profile_photo FROM workers";
 if (!empty($profession)) {
-    $sql .= " AND profession LIKE '%$profession%'";
+    $query .= " WHERE profession LIKE ?";
 }
-$sql .= " ORDER BY name ASC";
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($query);
 
+if (!empty($profession)) {
+    $searchTerm = "%$profession%";
+    $stmt->bind_param("s", $searchTerm);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Fetch worker profiles
 $workers = [];
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        // Set default profile photo if none exists
-        if (empty($row['profile_photo'])) {
-            $row['profile_photo'] = 'default-profile.jpg';
-        }
-        $workers[] = $row;
-    }
+while ($row = $result->fetch_assoc()) {
+    $workers[] = $row;
 }
 
+// Return JSON response
 echo json_encode($workers);
-
+$stmt->close();
 $conn->close();
 ?>
