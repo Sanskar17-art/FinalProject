@@ -5,26 +5,22 @@ $username = "root";
 $password = "";
 $dbname = "project";
 
-// Create connection
+
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Enable error reporting for debugging
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['error'] = "Please login to hire a worker.";
     header("Location: login.php");
     exit();
 }
 
-// Check if worker_id is set in POST
 if (!isset($_POST['worker_id'])) {
     $_SESSION['error'] = "Invalid request.";
     header("Location: Workers.php");
@@ -34,7 +30,6 @@ if (!isset($_POST['worker_id'])) {
 $worker_id = intval($_POST['worker_id']);
 $user_id = $_SESSION['user_id'];
 
-// Check if worker exists and is available
 $query = $conn->prepare("SELECT * FROM workers WHERE id = ? AND is_available = 1");
 $query->bind_param("i", $worker_id);
 $query->execute();
@@ -48,9 +43,7 @@ if ($result->num_rows === 0) {
 
 $worker = $result->fetch_assoc();
 
-// Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_request'])) {
-    // Validate inputs
     $errors = [];
     
     if (empty($_POST['job_title'])) {
